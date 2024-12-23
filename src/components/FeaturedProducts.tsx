@@ -36,10 +36,12 @@ export default function FeaturedProducts() {
   const [showAnimation, setShowAnimation] = useState(false)
 
   const handleAddToCart = (product: Product) => {
-    addToCart(product)
+    const cartItem = { ...product, quantity: 1 }
+    addToCart(cartItem) 
     setShowAnimation(true)
     setTimeout(() => setShowAnimation(false), 1000)
   }
+
 
   const filteredProducts = activeCategory === 'All'
     ? products
