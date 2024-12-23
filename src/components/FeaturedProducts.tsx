@@ -9,9 +9,17 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 
+type Product = {
+  id: number
+  name: string
+  price: number
+  image: string
+  category: string
+}
+
 const categories = ['All', 'Electronics', 'Jewelry', 'Men\'s Clothing', 'Women\'s Clothing']
 
-const products = [
+const products: Product[] = [
   { id: 1, name: 'Fjallraven Backpack', price: 109.95, image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg', category: 'Men\'s Clothing' },
   { id: 2, name: 'Mens Casual T-Shirts', price: 22.3, image: 'https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg', category: 'Men\'s Clothing' },
   { id: 3, name: 'Mens Cotton Jacket', price: 55.99, image: 'https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg', category: 'Men\'s Clothing' },
@@ -27,16 +35,7 @@ export default function FeaturedProducts() {
   const { addToCart } = useCart()
   const [showAnimation, setShowAnimation] = useState(false)
 
-
-  type product = {
-    id: number
-    name: string
-    price: number
-    quantity: number
-    image: string
-  }
-
-  const handleAddToCart = (product: product) => {
+  const handleAddToCart = (product: Product) => {
     addToCart(product)
     setShowAnimation(true)
     setTimeout(() => setShowAnimation(false), 1000)
